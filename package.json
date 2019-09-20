@@ -1,6 +1,6 @@
 {
   "name": "@lemoncode/fonk-range-number-validator",
-  "version": "0.1.0",
+  "version": "0.0.0",
   "description": "// TODO: Update description: This is a [fonk](https://github.com/Lemoncode/fonk) microlibrary that brings validation capabilities to validate if a field of a form ...",
   "main": "dist/@lemoncode/fonk-range-number-validator.cjs.js",
   "module": "dist/@lemoncode/fonk-range-number-validator.esm.js",
@@ -87,5 +87,9 @@
       "pretty-quick — staged",
       "git add"
     ]
+  },
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/",
+    "access": "public"
   }
 }
