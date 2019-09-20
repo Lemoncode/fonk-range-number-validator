@@ -1,16 +1,23 @@
 import { CustomValidatorArgs } from './validator.model';
 
-// TODO: Delete method if not necessary CustomArgs
+const calculatePath = (path: string) => (path ? `${path}.` : '');
+
 export const buildCustomMessage = (
   message: string,
-  args: CustomValidatorArgs
+  args: CustomValidatorArgs,
+  path?: string
 ) =>
   message &&
   Object.keys(args).reduce(
     (accum, current) =>
-      accum.replace(new RegExp(`{{${current}}}`, 'gi'), args[current]),
+      replaceArg(accum, args[current], `${calculatePath(path)}${current}`),
     message
   );
+
+const replaceArg = (message: string, arg: CustomValidatorArgs, path: string) =>
+  typeof arg === 'object'
+    ? buildCustomMessage(message, arg, path)
+    : message.replace(new RegExp(`{{${path}}}`, 'gi'), arg);
 
 export const isDefined = value =>
   value !== void 0 && value !== null && value !== '';

@@ -1,2 +1,9 @@
-// TODO: Add custom args if needed or delete file.
-export interface CustomValidatorArgs {}
+export interface CustomValidatorArgs {
+  min: Limit;
+  max: Limit;
+}
+
+export interface Limit {
+  value: number;
+  inclusive: boolean;
+}

@@ -1,7 +1,4 @@
-import {
-  ValidationSchema,
-  createFormValidation,
-} from '@lemoncode/fonk';
+import { ValidationSchema, createFormValidation } from '@lemoncode/fonk';
 import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
 const validationSchema: ValidationSchema = {
@@ -12,17 +9,16 @@ const validationSchema: ValidationSchema = {
 
 const formValidation = createFormValidation(validationSchema);
 
-// TODO: Update example values 'test' and/or 10 if needed
 Promise.all([
-  formValidation.validateField('myField', 'test'),
-  formValidation.validateField('myField', 10),
+  formValidation.validateField('myField', -10),
+  formValidation.validateField('myField', 50),
 ]).then(([failedResult, succeededResult]) => {
   document.getElementById('app').innerHTML = `
 <div style="flex-grow: 1;margin-left:2rem;">
   <h2>Example with failed result:</h2>
 
 <pre>
-  formValidation.validateField('myField', 'test')
+  formValidation.validateField('myField', -10)
 </pre>
 
   <h3>Result: </h3>
@@ -35,7 +31,7 @@ ${JSON.stringify(failedResult, null, 2)}
   <h2>Example with succeeded result:</h2>
 
 <pre>
-formValidation.validateField('myField', 10)
+formValidation.validateField('myField', 50)
 </pre>
 
   <h3>Result: </h3>

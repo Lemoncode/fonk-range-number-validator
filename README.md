@@ -6,28 +6,40 @@
 
 This is a [fonk](https://github.com/Lemoncode/fonk) microlibrary that brings validation capabilities to:
 
-// TODO: Update description and example.
-
-- Validate if a field of a form ....
+- Validate if a field of a form is in a given range
 
 How to add it to an existing form validation schema:
 
 We have the following form model:
 
-```
+```javascript
 const myFormValues = {
-  product : 'shoes',
+  product: 'shoes',
   price: 20,
-}
+};
 ```
 
-We can add a rangeNumber validation to the myFormValues
+We can add a rangeNumber validation to the myFormValues. CustomArgs are required:
 
 ```javascript
 import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
 const validationSchema = {
-  price: [rangeNumber.validator],
+  price: [
+    {
+      validator: rangeNumber.validator,
+      customArgs: {
+        min: {
+          value: 10,
+          inclusive: false,
+        },
+        max: {
+          value: 20,
+          inclusive: false,
+        },
+      },
+    },
+  ],
 };
 ```
 
