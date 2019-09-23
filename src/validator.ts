@@ -3,6 +3,8 @@ import {
   parseMessageWithCustomArgs,
 } from '@lemoncode/fonk';
 
+const VALIDATOR_TYPE = 'RANGE_NUMBER';
+
 let defaultMessage =
   'The value must be between {{min.value}} and {{max.value}}';
 export const setErrorMessage = message => (defaultMessage = message);
@@ -42,6 +44,6 @@ export const validator: FieldValidationFunctionSync<
           (message as string) || defaultMessage,
           customArgs
         ),
-    type: 'RANGE_NUMBER',
+    type: VALIDATOR_TYPE,
   };
 };
