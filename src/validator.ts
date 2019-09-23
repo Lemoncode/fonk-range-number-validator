@@ -1,18 +1,29 @@
-import { FieldValidationFunctionSync } from '@lemoncode/fonk';
-import { CustomValidatorArgs, Limit } from './validator.model';
-import { isDefined, buildCustomMessage } from './validator.business';
-
-const VALIDATOR_TYPE = 'RANGE_NUMBER';
+import {
+  FieldValidationFunctionSync,
+  parseMessageWithCustomArgs,
+} from '@lemoncode/fonk';
 
 let defaultMessage =
   'The value must be between {{min.value}} and {{max.value}}';
 export const setErrorMessage = message => (defaultMessage = message);
+
+const isDefined = value => value !== void 0 && value !== null && value !== '';
 
 const validateType = value => typeof value === 'number';
 
 const validate = (value, min: Limit, max: Limit) =>
   (min.inclusive ? value >= min.value : value > min.value) &&
   (max.inclusive ? value <= max.value : value < max.value);
+
+interface CustomValidatorArgs {
+  min: Limit;
+  max: Limit;
+}
+
+interface Limit {
+  value: number;
+  inclusive: boolean;
+}
 
 export const validator: FieldValidationFunctionSync<
   CustomValidatorArgs
@@ -27,7 +38,10 @@ export const validator: FieldValidationFunctionSync<
     succeeded,
     message: succeeded
       ? ''
-      : buildCustomMessage((message as string) || defaultMessage, customArgs),
-    type: VALIDATOR_TYPE,
+      : parseMessageWithCustomArgs(
+          (message as string) || defaultMessage,
+          customArgs
+        ),
+    type: 'RANGE_NUMBER',
   };
 };
