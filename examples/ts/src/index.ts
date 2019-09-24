@@ -3,7 +3,21 @@ import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
 const validationSchema: ValidationSchema = {
   field: {
-    myField: [rangeNumber.validator],
+    myField: [
+      {
+        validator: rangeNumber.validator,
+        customArgs: {
+          min: {
+            value: 0,
+            inclusive: false,
+          },
+          max: {
+            value: 100,
+            inclusive: false,
+          },
+        },
+      },
+    ],
   },
 };
 
