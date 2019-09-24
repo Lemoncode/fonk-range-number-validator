@@ -50,7 +50,9 @@ You can customize the error message displayed in two ways:
 ```javascript
 import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
-rangeNumber.setErrorMessage('El campo debe de ser numérico');
+rangeNumber.setErrorMessage(
+  'El campo debe de ser un valor dentro del intervalo'
+);
 ```
 
 - Locally just override the error message for this validationSchema:
