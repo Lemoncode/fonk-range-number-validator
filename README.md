@@ -51,7 +51,7 @@ You can customize the error message displayed in two ways:
 import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
 rangeNumber.setErrorMessage(
-  'El campo debe de ser un valor dentro del intervalo'
+  'El campo debe de ser un valor mayor que {{min.value}} y menor que {{max.value}}'
 );
 ```
 

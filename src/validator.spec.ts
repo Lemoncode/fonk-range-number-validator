@@ -474,9 +474,11 @@ describe('fonk-range-number-validator specs', () => {
 
   it('should overwrite default message when it feeds value and calls to setErrorMessage', () => {
     // Arrange
-    const value = 'test';
+    const value = -1;
 
-    setErrorMessage('other message');
+    setErrorMessage(
+      'The value must be greater than {{min.value}} and lower than {{max.value}}'
+    );
 
     // Act
     const result = validator({
@@ -496,7 +498,7 @@ describe('fonk-range-number-validator specs', () => {
     // Assert
     expect(result).toEqual({
       succeeded: false,
-      message: 'other message',
+      message: 'The value must be greater than 0 and lower than 100',
       type: VALIDATOR_TYPE,
     });
   });
