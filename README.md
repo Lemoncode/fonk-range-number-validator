@@ -25,21 +25,23 @@ We can add a rangeNumber validation to the myFormValues. CustomArgs are required
 import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
 const validationSchema = {
-  price: [
-    {
-      validator: rangeNumber.validator,
-      customArgs: {
-        min: {
-          value: 10,
-          inclusive: false,
-        },
-        max: {
-          value: 20,
-          inclusive: false,
+  field: {
+    price: [
+      {
+        validator: rangeNumber.validator,
+        customArgs: {
+          min: {
+            value: 10,
+            inclusive: false,
+          },
+          max: {
+            value: 20,
+            inclusive: false,
+          },
         },
       },
-    },
-  ],
+    ],
+  },
 };
 ```
 
@@ -61,12 +63,14 @@ rangeNumber.setErrorMessage(
 import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
 const validationSchema = {
-  price: [
-    {
-      validator: rangeNumber.validator,
-      message: 'Error message only updated for the validation schema',
-    },
-  ],
+  field: {
+    price: [
+      {
+        validator: rangeNumber.validator,
+        message: 'Error message only updated for the validation schema',
+      },
+    ],
+  },
 };
 ```
 
