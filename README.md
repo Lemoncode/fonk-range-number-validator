@@ -19,28 +19,72 @@ const myFormValues = {
 };
 ```
 
-We can add a rangeNumber validation to the myFormValues. CustomArgs are required:
+The validator must be configured with the following required arguments:
+
+```javascript
+export interface CustomValidatorArgs {
+  strictTypes?: boolean;
+  min: Limit;
+  max: Limit;
+}
+
+export interface Limit {
+  value: number;
+  inclusive: boolean;
+}
+```
+
+You need to know the default arguments:
+
+```javascript
+let defaultCustomArgs: CustomValidatorArgs = {
+  strictTypes: false,
+  min: {
+    value: 0,
+    inclusive: true,
+  },
+  max: {
+    value: 100,
+    inclusive: true,
+  },
+};
+```
+
+You can specify the custom arguments in two ways:
+
+- Locally just customize the arguments for this validationSchema:
 
 ```javascript
 import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
 const validationSchema = {
-  price: [
-    {
-      validator: rangeNumber.validator,
-      customArgs: {
-        min: {
-          value: 10,
-          inclusive: false,
-        },
-        max: {
-          value: 20,
-          inclusive: false,
+  field: {
+    price: [
+      {
+        validator: rangeNumber.validator,
+        customArgs: {
+          strictTypes: true,
+          min: {
+            value: 10,
+            inclusive: false,
+          },
+          max: {
+            value: 20,
+            inclusive: false,
+          },
         },
       },
-    },
-  ],
+    ],
+  },
 };
+```
+
+- Globally, replace the default custom arguments in all validationSchemas (e.g. enable strict types):
+
+```javascript
+import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
+
+rangeNumber.setCustomArgs({ strictTypes: true });
 ```
 
 You can customize the error message displayed in two ways:

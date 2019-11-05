@@ -1,4 +1,4 @@
-import { validator, setErrorMessage } from './validator';
+import { validator, setErrorMessage, setCustomArgs } from './validator';
 
 const VALIDATOR_TYPE = 'RANGE_NUMBER';
 const TEST_MESSAGE = 'Custom message for tests';
@@ -149,6 +149,7 @@ describe('fonk-range-number-validator specs', () => {
     const result = validator({
       value,
       customArgs: {
+        strictTypes: true,
         min: {
           value: 0,
           inclusive: false,
@@ -499,6 +500,29 @@ describe('fonk-range-number-validator specs', () => {
     expect(result).toEqual({
       succeeded: false,
       message: 'The value must be greater than 0 and lower than 100',
+      type: VALIDATOR_TYPE,
+    });
+  });
+
+  it('should overwrite default customArgs when it feeds value is valid and calls to setCustomArgs', () => {
+    // Arrange
+    const value = '-1';
+
+    setCustomArgs({ strictTypes: false });
+
+    // Act
+    const result = validator({
+      value,
+      customArgs: {
+        min: { value: -5, inclusive: false },
+        max: { value: 5, inclusive: false },
+      },
+    });
+
+    // Assert
+    expect(result).toEqual({
+      succeeded: true,
+      message: '',
       type: VALIDATOR_TYPE,
     });
   });
