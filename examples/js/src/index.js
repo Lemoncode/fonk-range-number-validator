@@ -7,6 +7,7 @@ const validationSchema = {
       {
         validator: rangeNumber.validator,
         customArgs: {
+          strictTypes: true,
           min: {
             value: 0,
             inclusive: false,
