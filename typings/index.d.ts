@@ -10,6 +10,7 @@ export namespace rangeNumber {
     value: number;
     inclusive: boolean;
   }
-  export const validator: FieldValidationFunctionSync;
+  export const validator: FieldValidationFunctionSync<CustomValidatorArgs>;
   export function setErrorMessage(message: string | string[]): void;
+  export function setCustomArgs(customArgs: Partial<CustomValidatorArgs>): void;
 }
