@@ -67,7 +67,7 @@ export const validator: FieldValidationFunctionSync<
     succeeded,
     message: succeeded
       ? ''
-      : parseMessageWithCustomArgs(message as string, customArgs),
+      : parseMessageWithCustomArgs(message as string, args),
     type: VALIDATOR_TYPE,
   };
 };
