@@ -1,6 +1,6 @@
 {
   "name": "@lemoncode/fonk-range-number-validator",
-  "version": "0.0.0",
+  "version": "1.0.1",
   "description": "This is a [fonk](https://github.com/Lemoncode/fonk) microlibrary that brings validation capabilities to validate if a field of a form is in a given range",
   "main": "dist/@lemoncode/fonk-range-number-validator.cjs.js",
   "module": "dist/@lemoncode/fonk-range-number-validator.esm.js",

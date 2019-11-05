@@ -1,12 +1,18 @@
 # fonk-range-number-validator
 
-[![CircleCI](https://badgen.net/github/status/Lemoncode/fonk-range-number-validator/master/ci?icon=circleci&label=circleci)](https://circleci.com/gh/Lemoncode/fonk-range-number-validator/tree/master)
+[![CircleCI](https://badgen.net/github/status/Lemoncode/fonk-range-number-validator/master?icon=circleci&label=circleci)](https://circleci.com/gh/Lemoncode/fonk-range-number-validator/tree/master)
 [![NPM Version](https://badgen.net/npm/v/@lemoncode/fonk-range-number-validator?icon=npm&label=npm)](https://www.npmjs.com/package/@lemoncode/fonk-range-number-validator)
 [![bundle-size](https://badgen.net/bundlephobia/min/@lemoncode/fonk-range-number-validator)](https://bundlephobia.com/result?p=@lemoncode/fonk-range-number-validator)
 
 This is a [fonk](https://github.com/Lemoncode/fonk) microlibrary that brings validation capabilities to:
 
 - Validate if a field of a form is in a given range
+
+How to install it:
+
+```bash
+npm install @lemoncode/fonk-range-number-validator --save
+```
 
 How to add it to an existing form validation schema:
 
@@ -105,12 +111,14 @@ rangeNumber.setErrorMessage(
 import { rangeNumber } from '@lemoncode/fonk-range-number-validator';
 
 const validationSchema = {
-  price: [
-    {
-      validator: rangeNumber.validator,
-      message: 'Error message only updated for the validation schema',
-    },
-  ],
+  field: {
+    price: [
+      {
+        validator: rangeNumber.validator,
+        message: 'Error message only updated for the validation schema',
+      },
+    ],
+  },
 };
 ```
 
